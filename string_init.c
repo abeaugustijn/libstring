@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 22:38:38 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/24 22:56:02 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/24 23:09:52 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ bool	string_init(size_t init_cap, char *init_value, t_string *result)
 			return (true);
 	}
 	result->cap = init_cap;
-	result->size = (init_value ? init_len : 0);
+	result->len = (init_value ? init_len : 0);
 	result->str = malloc(init_cap + 1);
 	if (!result->str)
 		return (true);

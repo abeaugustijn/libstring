@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 22:36:16 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/24 23:02:17 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/24 23:09:52 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdbool.h>
 
 typedef struct	s_string {
-	size_t	size;
+	size_t	len;
 	size_t	cap;
 	char	*str;
 }				t_string;

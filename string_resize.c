@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 22:44:35 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/24 22:48:38 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/24 23:09:52 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ bool	string_resize(t_string *str)
 	new_str = malloc(new_cap + 1);
 	if (!new_str)
 		return (true);
-	string_memcpy(new_str, str->str, str->size);
-	new_str[str->size] = '\0';
+	string_memcpy(new_str, str->str, str->len);
+	new_str[str->len] = '\0';
 	free(str->str);
 	str->str = new_str;
 	str->cap = new_cap;
