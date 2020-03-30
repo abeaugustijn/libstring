@@ -6,12 +6,12 @@
 /*   By: abe <abe@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/28 20:17:50 by abe            #+#    #+#                */
-/*   Updated: 2020/03/30 09:51:42 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/30 12:05:03 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "utils.h"
 #include <stddef.h>
-#include "../libstring.h"
 
 /*
 **	The safer version of memcpy. Safely copies 'n' bytes from 'src' to 'dest'

@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 22:36:16 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/30 11:02:42 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/30 12:02:15 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,25 +23,146 @@ typedef struct	s_string {
 	char	*str;
 }				t_string;
 
-bool	string_from(char *from, t_string *str);
-bool	string_init(size_t init_cap, char *init_value, t_string *result);
-bool	string_insert(t_string *str, size_t i, char *insert);
-bool	string_push(t_string *str, char *to_push);
-bool	string_replace(t_string *str, char *to_find, char *replace);
-bool	string_resize(t_string *str);
-bool	string_resize_cap(t_string *str, size_t cap);
-bool	string_shrink(t_string *str);
-void	string_delete(t_string *str, size_t index, size_t len);
-void	string_free(t_string *str);
-
 /*
-**	Utils
+**	Delete a subsection of the string. This will not resize the string to fit
+**	the shorter string. If len == 0 or if the index is invalid, this function
+**	will not do anything to the string. The new length of the string will be
+**	set to the result.
+**
+**	@param {t_string *} str
+**	@param {size_t} index - the index of the first char to be deleted
+**	@param {size_t} len - the amount of characters (including the one on index)
+**		to be deleted.
 */
 
-int		ft_strncmp(const char *s1, const char *s2, size_t n);
-size_t	ft_strlen(const char *s);
-void	*ft_memcpy(void *dst, const void *src, size_t n);
-void	*ft_memmove(void *dest, const void *src, size_t n);
-void	ft_bzero(void *mem, size_t size);
+void	string_delete(t_string *str, size_t index, size_t len);
+
+
+/*
+**	Free the string. This will also set all of the values in the string struct
+**	to 0 to make sure no freed pointers will be used.
+**
+**	@param {t_string *} str
+*/
+
+void	string_free(t_string *str);
+
+
+/*
+**	Create a new string which inherits the given string. The len and cap fields
+**	will be set to the length of the new string. New memory will be allocated
+**	to store the new string.
+**
+**	@param {char *} from
+**	@param {t_string *} str - to store the resulting struct
+**
+**	@return {bool} - true if the allocation failed
+*/
+
+bool	string_from(char *from, t_string *str);
+
+
+/*
+**	Initialize a new string. An initial string (init_value) can be given. If the
+**	length of this string exceeds the init_cap, true will be returned and
+**	nothing will happen to the result string.
+**
+**	@param {size_t} init_cap - the amount of bytes which will be allocated in
+**		this function.
+**	@param {char *} init_value - the string to store at first. NULL if the new
+**		string should be empty.
+**	@param {t_string *} result
+**
+**	@return {bool} - true if the allocation failed
+*/
+
+bool	string_init(size_t init_cap, char *init_value, t_string *result);
+
+
+/*
+**	Insert a substring into an existing string. This will only allocate new
+**	memory if the length of the new string exceeds the strings current
+**	capacity. If insert is empty or if the index is invalid, false will be
+**	returned and nothing will happen.
+**
+**	@param {t_string *} str
+**	@param {size_t} index - the index in the string at which the substring will
+**		be inserted. In the result, this value will be the index of the first
+**		character of the substring.
+**	@param {char *} insert - the string to insert
+**
+**	@return {bool} - true if the allocation fails
+*/
+
+bool	string_insert(t_string *str, size_t index, char *insert);
+
+
+/*
+**	Push a string of characters to the end of the existing string. If the
+**	capacity allows it, no new memory will be allocated. Otherwise the function
+**	allocates new memory until the new string will fit.
+**
+**	@param {t_string *} str
+**	@param {char *} to_push
+**
+**	@return {bool} - true if an allocation failed
+*/
+
+bool	string_push(t_string *str, char *to_push);
+
+
+/*
+**	Search a string for a substring and replace it with another string.
+**
+**	@param {t_string *} str
+**	@param {char *} to_find - the string to replace
+**	@param {char *} replace - the string to replace it with.
+**
+**	@return {bool} true if an allocation failed
+*/
+
+bool	string_replace(t_string *str, char *to_find, char *replace);
+
+
+/*
+**	Resize a string so the capacity will have a minimum value of the given
+**	capacity. This is more efficient to use than string_resize if the desired
+**	capacity is already known at the time of calling, because only one
+**	allocation and strcpy are necessary for the operation. This will still
+**	keep multiplying the current capacity with 2, like the normal string_resize
+**	will.
+**
+**	@param {t_string *} str
+**	@param {size_t} cap
+**
+**	@return {bool} - true if the allocation failed
+*/
+
+bool	string_resize_cap(t_string *str, size_t cap);
+
+
+/*
+**	Double the capacity of an existing string. This will allocate new memory,
+**	copy the contents of the old string to the new string, set the str element
+**	of the string struct to the new memory and free the old string.
+**
+**	@param {t_string *} str
+**
+**	@return {bool} - true if the allocation failed
+*/
+
+bool	string_resize(t_string *str);
+
+
+/*
+**	Shrink the size of a string down to the minimum amount of bytes necessary
+**	to store the string.
+**
+**	@param {t_string *} str
+**
+**	@return {bool} - true if the allocation failed
+*/
+
+bool	string_shrink(t_string *str);
 
 #endif

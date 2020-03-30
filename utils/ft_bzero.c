@@ -6,11 +6,11 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 09:02:53 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/30 09:03:42 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/30 12:04:43 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libstring.h"
+#include "utils.h"
 
 void	ft_bzero(void *mem, size_t size)
 {

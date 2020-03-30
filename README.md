@@ -212,7 +212,7 @@ bool	string_resize(t_string *str);
 **	@return {bool} - true if the allocation failed
 */
 
-bool	string_shrink(t_string *str)
+bool	string_shrink(t_string *str);
 ```
 
 ## Contributions

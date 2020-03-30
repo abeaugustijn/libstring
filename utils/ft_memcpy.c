@@ -6,12 +6,12 @@
 /*   By: abe <abe@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/28 19:45:39 by abe            #+#    #+#                */
-/*   Updated: 2020/03/30 08:48:56 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/30 12:05:05 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "utils.h"
 #include <stddef.h>
-#include "../libstring.h"
 
 /*
 **	Copy n bytes from stc to dst. The behaviour is undefined if src and

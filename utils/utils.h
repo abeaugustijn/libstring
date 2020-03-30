@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   string_delete.c                                    :+:      :+:    :+:   */
+/*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/24 23:25:19 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/30 11:59:49 by aaugusti         ###   ########.fr       */
+/*   Created: 2020/03/30 11:59:04 by aaugusti          #+#    #+#             */
+/*   Updated: 2020/03/30 11:59:29 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libstring.h"
-#include "utils/utils.h"
+#ifndef UTILS_H
+# define UTILS_H
 
-void	string_delete(t_string *str, size_t index, size_t len)
-{
-	size_t	res_len;
+# include "../libstring.h"
 
-	if (index >= str->len)
-		return ;
-	if (index + len > str->len)
-		len = str->len - index;
-	if (!len)
-		return ;
-	res_len = str->len - len - index;
-	ft_memcpy(&str->str[index], &str->str[index + len], res_len + 1);
-	str->len -= len;
-}
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
+size_t	ft_strlen(const char *s);
+void	*ft_memcpy(void *dst, const void *src, size_t n);
+void	*ft_memmove(void *dest, const void *src, size_t n);
+void	ft_bzero(void *mem, size_t size);
+
+#endif

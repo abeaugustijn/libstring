@@ -6,22 +6,12 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 22:40:33 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/30 11:04:14 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/30 12:00:17 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libstring.h"
-
-/*
-**	Push a string of characters to the end of the existing string. If the
-**	capacity allows it, no new memory will be allocated. Otherwise the function
-**	allocates new memory until the new string will fit.
-**
-**	@param {t_string *} str
-**	@param {char *} to_push
-**
-**	@return {bool} - true if an allocation failed
-*/
+#include "utils/utils.h"
 
 bool	string_push(t_string *str, char *to_push)
 {

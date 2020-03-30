@@ -6,7 +6,7 @@
 #    By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/24 22:35:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/03/30 11:02:50 by aaugusti         ###   ########.fr        #
+#    Updated: 2020/03/30 12:04:04 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,12 +47,15 @@ $(NAME): $(OFILES) $(UTILS_OFILES)
 	gcc -o $@ -c $< $(FLAGS) -g
 
 clean:
-	rm -f $(OFILES) $(UTILS_OFILES) test.o
+	rm -f $(OFILES) $(UTILS_OFILES) test.o example.o
 
 fclean: clean
-	rm -f $(NAME) test
+	rm -f $(NAME) test example
 
 re: fclean all
 
 test: $(OFILES) $(UTILS_OFILES) test.o
 	gcc -o test $(FLAGS) $(OFILES) $(UTILS_OFILES) test.o -fsanitize=address
+
+example: $(OFILES) $(UTILS_OFILES) example.o
+	gcc -o example $(FLAGS) $(OFILES) $(UTILS_OFILES) example.o -fsanitize=address

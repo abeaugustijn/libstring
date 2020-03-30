@@ -6,26 +6,12 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 08:58:34 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/30 11:03:23 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/30 12:00:14 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libstring.h"
-
-/*
-**	Insert a substring into an existing string. This will only allocate new
-**	memory if the length of the new string exceeds the strings current
-**	capacity. If insert is empty or if the index is invalid, false will be
-**	returned and nothing will happen.
-**
-**	@param {t_string *} str
-**	@param {size_t} index - the index in the string at which the substring will
-**		be inserted. In the result, this value will be the index of the first
-**		character of the substring.
-**	@param {char *} insert - the string to insert
-**
-**	@return {bool} - true if the allocation fails
-*/
+#include "utils/utils.h"
 
 bool		string_insert(t_string *str, size_t index, char *insert)
 {

@@ -6,22 +6,13 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 16:09:52 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/30 10:46:20 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/30 12:00:22 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libstring.h"
+#include "utils/utils.h"
 #include <stdlib.h>
-
-/*
-**	Search a string for a substring and replace it with another string.
-**
-**	@param {t_string *} str
-**	@param {char *} to_find - the string to replace
-**	@param {char *} replace - the string to replace it with.
-**
-**	@return {bool} true if an allocation failed
-*/
 
 bool	string_replace(t_string *str, char *to_find, char *replace)
 {
