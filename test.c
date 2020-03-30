@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 13:32:47 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/30 10:53:55 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/30 12:21:13 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,10 @@ static void	test_insert(void)
 	assert(str.len == 10);
 	assert(str.cap == 10);
 	assert(!strcmp(str.str, "tabcdefest"));
+	string_insert(&str, strlen(str.str), " bar");
+	assert(str.len == 14);
+	assert(str.cap == 20);
+	assert(!strcmp(str.str, "tabcdefest bar"));
 	string_free(&str);
 }
 
@@ -124,16 +128,28 @@ static void	test_replace(void)
 	string_free(&str);
 }
 
+static void	test_replace_end(void)
+{
+	t_string	str;
+
+	assert(!string_from("test foo", &str));
+	assert(!string_replace(&str, "foo", "bar"));
+	assert(!strcmp(str.str, "test bar"));
+	assert(str.len == 8);
+	assert(str.cap == 8);
+}
+
 typedef struct	s_test {
 	char	*name;
 	void	(*func)(void);
 }				t_test;
 
 t_test	g_tests[] = {
-	{ "simple",		test_simple },
-	{ "delete",		test_delete },
-	{ "insert",		test_insert },
-	{ "replace",	test_replace },
+	{ "simple",			test_simple },
+	{ "delete",			test_delete },
+	{ "insert",			test_insert },
+	{ "replace",		test_replace },
+	{ "replace_end",	test_replace_end },
 	{ NULL,			NULL },
 };
 

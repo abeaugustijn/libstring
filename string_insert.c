@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 08:58:34 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/30 12:00:14 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/30 12:22:58 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,7 @@ bool		string_insert(t_string *str, size_t index, char *insert)
 	size_t	insert_len;
 
 	insert_len = ft_strlen(insert);
-	if (!insert_len || index >= str->len)
-		return (false);
-	if (index >= str->len)
+	if (!insert_len || index > str->len)
 		return (false);
 	if (string_resize_cap(str, str->len + insert_len))
 		return (true);
