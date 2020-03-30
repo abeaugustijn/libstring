@@ -217,3 +217,13 @@ bool	string_shrink(t_string *str);
 
 ## Contributions
 Feel free to open an issue if you encounter any problems with the library. Pull requests are highly apprecieated as well.
+
+## TODOs
+These are some functions which will likely be added in the near future.
+* string_dup - duplicate a string
+* string_index_of - find the index of a substring
+* string_join - give an array of strings and concatenate them into a new string
+* string_split - splits the string at a given set of characters and returns an array of `t_string` instances
+* string_to_low - convert all characters to lowercase
+* string_to_up - convert all characters to uppercase
+* string_trim - remove all whitespace surrounding the string
