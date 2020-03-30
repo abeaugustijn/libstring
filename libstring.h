@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 22:36:16 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/30 14:34:11 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/30 16:42:37 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,21 @@ void	string_free(t_string *str);
 */
 
 bool	string_from(char *from, t_string *str);
+
+
+/*
+**	Create a new string which inherits a subsection of the given string. New
+**	memory will be allocated for the string.
+**
+**	@param {char *} from
+**	@param {size_t} start - index of the first character of the new string
+**	@param {size_t} len - the length of the new string
+**	@param {t_string *} result
+**
+**	@return {bool} - true is the allocation failed or an invalid range is given
+*/
+
+bool	string_from_range(char *from, size_t start, size_t len, t_string *str);
 
 
 /*

@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 13:32:47 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/30 15:54:37 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/30 16:50:24 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,6 +167,30 @@ static void	test_join(void)
 	string_free(&str);
 }
 
+static void	test_from_range(void)
+{
+	t_string	str;
+	char		*test_str;
+
+	test_str = "this is a test!!";
+	assert(!string_from_range(test_str, 0, 4, &str));
+	assert(str.len == 4);
+	assert(str.cap == 4);
+	assert(!strcmp(str.str, "this"));
+	string_free(&str);
+	assert(!string_from_range(test_str, 5, 5, &str));
+	assert(str.len == 5);
+	assert(str.cap == 5);
+	assert(!strcmp(str.str, "is a "));
+	string_free(&str);
+	assert(!string_from_range(test_str, 5, 500, &str));
+	assert(str.len == 11);
+	assert(str.cap == 11);
+	assert(!strcmp(str.str, "is a test!!"));
+	string_free(&str);
+	assert(string_from_range(test_str, 500, 5, &str));
+}
+
 typedef struct	s_test {
 	char	*name;
 	void	(*func)(void);
@@ -179,6 +203,7 @@ t_test	g_tests[] = {
 	{ "replace",		test_replace },
 	{ "replace_end",	test_replace_end },
 	{ "join",			test_join },
+	{ "from_range",		test_from_range },
 	{ NULL,			NULL },
 };
 
