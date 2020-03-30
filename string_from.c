@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   string_resize.c                                    :+:      :+:    :+:   */
+/*   string_from.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/24 22:44:35 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/30 10:47:47 by aaugusti         ###   ########.fr       */
+/*   Created: 2020/03/30 10:01:41 by aaugusti          #+#    #+#             */
+/*   Updated: 2020/03/30 10:38:01 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,26 @@
 #include <stdlib.h>
 
 /*
-**	Double the capacity of an existing string. This will allocate new memory,
-**	copy the contents of the old string to the new string, set the str element
-**	of the string struct to the new memory and free the old string.
+**	Create a new string which inherits the given string. The len and cap fielts
+**	will be set to the length of the new string. New memory will be allocated
+**	to store the new string.
 **
-**	@param {t_string *} str
+**	@param {char *} from
+**	@param {t_string *} str - to store the resulting struct
 **
 **	@return {bool} - true if the allocation failed
 */
 
-bool	string_resize(t_string *str)
+bool	string_from(char *from, t_string *str)
 {
-	char	*new_str;
-	size_t	new_cap;
+	size_t	len;
 
-	new_cap = str->cap * 2;
-	new_str = malloc(new_cap + 1);
-	if (!new_str)
+	len = ft_strlen(from);
+	str->str = malloc(len + 1);
+	if (!str->str)
 		return (true);
-	ft_memcpy(new_str, str->str, str->len + 1);
-	free(str->str);
-	str->str = new_str;
-	str->cap = new_cap;
+	ft_memcpy(str->str, from, len + 1);
+	str->cap = len;
+	str->len = len;
 	return (false);
 }

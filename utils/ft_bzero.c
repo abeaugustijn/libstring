@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   string_memcpy.c                                    :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/24 22:56:40 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/24 22:57:21 by aaugusti         ###   ########.fr       */
+/*   Created: 2020/03/30 09:02:53 by aaugusti          #+#    #+#             */
+/*   Updated: 2020/03/30 09:03:42 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libstring.h"
-#include <stddef.h>
+#include "../libstring.h"
 
-void	*string_memcpy(void *dst, const void *src, size_t n)
+void	ft_bzero(void *mem, size_t size)
 {
-	unsigned char *dst_cpy;
+	size_t	i;
 
-	if (!dst && !src)
-		return (NULL);
-	dst_cpy = dst;
-	while (n > 0)
+	i = 0;
+	while (i < size)
 	{
-		*dst_cpy = *((unsigned char *)src);
-		dst_cpy++;
-		src++;
-		n--;
+		((unsigned char *)mem)[i] = 0;
+		i++;
 	}
-	return (dst);
 }
