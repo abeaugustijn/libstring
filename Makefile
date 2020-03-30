@@ -6,7 +6,7 @@
 #    By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/24 22:35:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/03/30 12:04:04 by aaugusti         ###   ########.fr        #
+#    Updated: 2020/03/30 12:28:48 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,8 +31,11 @@ UTILS			=	\
 					strlen\
 					strncmp\
 
-OFILES			=	$(SRCS:%=string_%.o)
+OFILES			=	$(SRCS:%=src/string_%.o)
 UTILS_OFILES	=	$(UTILS:%=utils/ft_%.o)
+
+INCLUDES		=	-I .\
+					-I utils\
 
 FLAGS			=	-Wall -Werror -Wextra -Ofast
 
@@ -44,7 +47,7 @@ $(NAME): $(OFILES) $(UTILS_OFILES)
 	$(AR_COMMAND) $(NAME) $(OFILES) $(UTILS_OFILES)
 
 %.o: %.c
-	gcc -o $@ -c $< $(FLAGS) -g
+	gcc -o $@ -c $< $(FLAGS) $(INCLUDES)
 
 clean:
 	rm -f $(OFILES) $(UTILS_OFILES) test.o example.o
@@ -55,7 +58,9 @@ fclean: clean
 re: fclean all
 
 test: $(OFILES) $(UTILS_OFILES) test.o
-	gcc -o test $(FLAGS) $(OFILES) $(UTILS_OFILES) test.o -fsanitize=address
+	gcc -o test $(FLAGS) $(INCLUDES) $(OFILES) $(UTILS_OFILES) test.o\
+		-fsanitize=address
 
 example: $(OFILES) $(UTILS_OFILES) example.o
-	gcc -o example $(FLAGS) $(OFILES) $(UTILS_OFILES) example.o -fsanitize=address
+	gcc -o example $(FLAGS) $(INCLUDES) $(OFILES) $(UTILS_OFILES) example.o\
+		-fsanitize=address

@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   string_init.c                                      :+:      :+:    :+:   */
+/*   string_shrink.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/24 22:38:38 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/30 12:00:09 by aaugusti         ###   ########.fr       */
+/*   Created: 2020/03/24 22:48:49 by aaugusti          #+#    #+#             */
+/*   Updated: 2020/03/30 12:29:56 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libstring.h"
-#include "utils/utils.h"
+#include <libstring.h>
 #include <stdlib.h>
+#include <utils.h>
 
-bool	string_init(size_t init_cap, char *init_value, t_string *result)
+bool	string_shrink(t_string *str)
 {
-	size_t	init_len;
+	char	*new_str;
 
-	if (init_value)
-	{
-		init_len = ft_strlen(init_value);
-		if (init_len > init_cap)
-			return (true);
-	}
-	result->cap = init_cap;
-	result->len = (init_value ? init_len : 0);
-	result->str = malloc(init_cap + 1);
-	if (!result->str)
+	new_str = malloc(str->len + 1);
+	if (!new_str)
 		return (true);
-	if (init_value)
-		ft_memcpy(result->str, init_value, init_len + 1);
+	ft_memcpy(new_str, str->str, str->len + 1);
+	free(str->str);
+	str->cap = str->len;
+	str->str = new_str;
 	return (false);
 }

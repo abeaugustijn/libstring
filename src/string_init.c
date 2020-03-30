@@ -1,41 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   string_replace.c                                   :+:      :+:    :+:   */
+/*   string_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/24 16:09:52 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/30 12:00:22 by aaugusti         ###   ########.fr       */
+/*   Created: 2020/03/24 22:38:38 by aaugusti          #+#    #+#             */
+/*   Updated: 2020/03/30 12:26:39 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libstring.h"
 #include "utils/utils.h"
+#include <libstring.h>
 #include <stdlib.h>
 
-bool	string_replace(t_string *str, char *to_find, char *replace)
+bool	string_init(size_t init_cap, char *init_value, t_string *result)
 {
-	size_t	i;
-	size_t	to_find_len;
-	size_t	replace_len;
+	size_t	init_len;
 
-	to_find_len = ft_strlen(to_find);
-	if (!to_find_len)
-		return (false);
-	replace_len = ft_strlen(replace);
-	i = 0;
-	while (str->str[i])
+	if (init_value)
 	{
-		if (!ft_strncmp(&str->str[i], to_find, to_find_len))
-		{
-			string_delete(str, i, to_find_len);
-			if (string_insert(str, i, replace))
-				return (true);
-			i += replace_len;
-		}
-		else
-			i++;
+		init_len = ft_strlen(init_value);
+		if (init_len > init_cap)
+			return (true);
 	}
+	result->cap = init_cap;
+	result->len = (init_value ? init_len : 0);
+	result->str = malloc(init_cap + 1);
+	if (!result->str)
+		return (true);
+	if (init_value)
+		ft_memcpy(result->str, init_value, init_len + 1);
 	return (false);
 }

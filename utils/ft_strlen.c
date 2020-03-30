@@ -6,12 +6,12 @@
 /*   By: abe <abe@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/28 21:45:15 by abe            #+#    #+#                */
-/*   Updated: 2020/03/30 12:04:59 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/30 12:30:16 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
 #include <stddef.h>
+#include <utils.h>
 
 /*
 **	Get the length of string s.

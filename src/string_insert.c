@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   string_resize_cap.c                                :+:      :+:    :+:   */
+/*   string_insert.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/30 10:58:09 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/30 12:00:33 by aaugusti         ###   ########.fr       */
+/*   Created: 2020/03/30 08:58:34 by aaugusti          #+#    #+#             */
+/*   Updated: 2020/03/30 12:29:40 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libstring.h"
-#include "utils/utils.h"
-#include <stdlib.h>
+#include <libstring.h>
+#include <utils.h>
 
-bool	string_resize_cap(t_string *str, size_t cap)
+bool		string_insert(t_string *str, size_t index, char *insert)
 {
-	char	*new_str;
+	size_t	insert_len;
 
-	while (cap > str->cap)
-		str->cap *= 2;
-	new_str = malloc(str->cap + 1);
-	if (!new_str)
+	insert_len = ft_strlen(insert);
+	if (!insert_len || index > str->len)
+		return (false);
+	if (string_resize_cap(str, str->len + insert_len))
 		return (true);
-	ft_memcpy(new_str, str->str, str->len + 1);
-	free(str->str);
-	str->str = new_str;
+	ft_memmove(&str->str[index + insert_len], &str->str[index],
+			str->len - index + 1);
+	ft_memcpy(&str->str[index], insert, insert_len);
+	str->len += insert_len;
 	return (false);
 }

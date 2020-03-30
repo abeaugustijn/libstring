@@ -1,29 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   string_from.c                                      :+:      :+:    :+:   */
+/*   string_free.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/30 10:01:41 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/30 12:00:03 by aaugusti         ###   ########.fr       */
+/*   Created: 2020/03/30 09:01:47 by aaugusti          #+#    #+#             */
+/*   Updated: 2020/03/30 12:29:32 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libstring.h"
-#include "utils/utils.h"
+#include <libstring.h>
 #include <stdlib.h>
+#include <utils.h>
 
-bool	string_from(char *from, t_string *str)
+void	string_free(t_string *str)
 {
-	size_t	len;
-
-	len = ft_strlen(from);
-	str->str = malloc(len + 1);
-	if (!str->str)
-		return (true);
-	ft_memcpy(str->str, from, len + 1);
-	str->cap = len;
-	str->len = len;
-	return (false);
+	free(str->str);
+	ft_bzero(str, sizeof(t_string));
 }

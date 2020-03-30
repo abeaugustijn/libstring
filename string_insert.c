@@ -6,11 +6,11 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 08:58:34 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/30 12:22:58 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/30 12:25:34 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libstring.h"
+#include <libstring.h>
 #include "utils/utils.h"
 
 bool		string_insert(t_string *str, size_t index, char *insert)

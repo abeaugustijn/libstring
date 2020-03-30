@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   string_push.c                                      :+:      :+:    :+:   */
+/*   string_from.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/24 22:40:33 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/30 12:00:17 by aaugusti         ###   ########.fr       */
+/*   Created: 2020/03/30 10:01:41 by aaugusti          #+#    #+#             */
+/*   Updated: 2020/03/30 12:29:37 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libstring.h"
-#include "utils/utils.h"
+#include <libstring.h>
+#include <stdlib.h>
+#include <utils.h>
 
-bool	string_push(t_string *str, char *to_push)
+bool	string_from(char *from, t_string *str)
 {
-	size_t	to_push_len;
+	size_t	len;
 
-	to_push_len = ft_strlen(to_push);
-	if (string_resize_cap(str, str->len + to_push_len))
+	len = ft_strlen(from);
+	str->str = malloc(len + 1);
+	if (!str->str)
 		return (true);
-	ft_memcpy(&str->str[str->len], to_push, to_push_len + 1);
-	str->len += to_push_len;
+	ft_memcpy(str->str, from, len + 1);
+	str->cap = len;
+	str->len = len;
 	return (false);
 }
