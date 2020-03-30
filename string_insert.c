@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 08:58:34 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/30 10:43:41 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/30 11:03:23 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,8 @@ bool		string_insert(t_string *str, size_t index, char *insert)
 		return (false);
 	if (index >= str->len)
 		return (false);
-	while (insert_len + str->len > str->cap)
-		if (string_resize(str))
-			return (true);
+	if (string_resize_cap(str, str->len + insert_len))
+		return (true);
 	ft_memmove(&str->str[index + insert_len], &str->str[index],
 			str->len - index + 1);
 	ft_memcpy(&str->str[index], insert, insert_len);

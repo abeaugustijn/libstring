@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 22:38:38 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/30 10:40:41 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/30 10:56:56 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 
 /*
-**	Initialize a new string. A initial string (init_value) can be given. If the
+**	Initialize a new string. An initial string (init_value) can be given. If the
 **	length of this string exceeds the init_cap, true will be returned and
 **	nothing will happen to the result string.
 **

@@ -6,7 +6,7 @@
 #    By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/24 22:35:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/03/30 10:06:08 by aaugusti         ###   ########.fr        #
+#    Updated: 2020/03/30 11:02:50 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRCS			=	\
 					push\
 					replace\
 					resize\
+					resize_cap\
 					shrink\
 
 UTILS			=	\

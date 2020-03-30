@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 22:36:16 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/30 10:05:54 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/30 11:02:42 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ bool	string_insert(t_string *str, size_t i, char *insert);
 bool	string_push(t_string *str, char *to_push);
 bool	string_replace(t_string *str, char *to_find, char *replace);
 bool	string_resize(t_string *str);
+bool	string_resize_cap(t_string *str, size_t cap);
 bool	string_shrink(t_string *str);
 void	string_delete(t_string *str, size_t index, size_t len);
 void	string_free(t_string *str);

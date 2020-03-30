@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 10:01:41 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/30 10:38:01 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/30 10:56:49 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 
 /*
-**	Create a new string which inherits the given string. The len and cap fielts
+**	Create a new string which inherits the given string. The len and cap fields
 **	will be set to the length of the new string. New memory will be allocated
 **	to store the new string.
 **
