@@ -85,9 +85,8 @@ These are the basic functions used to manipulate a string.
 */
 
 void	string_delete(t_string *str, size_t index, size_t len);
-```
 
-```c
+
 /*
 **	Free the string. This will also set all of the values in the string struct
 **	to 0 to make sure no freed pointers will be used.
@@ -96,9 +95,8 @@ void	string_delete(t_string *str, size_t index, size_t len);
 */
 
 void	string_free(t_string *str);
-```
 
-```c
+
 /*
 **	Create a new string which inherits the given string. The len and cap fields
 **	will be set to the length of the new string. New memory will be allocated
@@ -111,9 +109,8 @@ void	string_free(t_string *str);
 */
 
 bool	string_from(char *from, t_string *str);
-```
 
-```c
+
 /*
 **	Initialize a new string. An initial string (init_value) can be given. If the
 **	length of this string exceeds the init_cap, true will be returned and
@@ -129,9 +126,8 @@ bool	string_from(char *from, t_string *str);
 */
 
 bool	string_init(size_t init_cap, char *init_value, t_string *result);
-```
 
-```c
+
 /*
 **	Insert a substring into an existing string. This will only allocate new
 **	memory if the length of the new string exceeds the strings current
@@ -148,9 +144,8 @@ bool	string_init(size_t init_cap, char *init_value, t_string *result);
 */
 
 bool	string_insert(t_string *str, size_t index, char *insert);
-```
 
-```c
+
 /*
 **	Push a string of characters to the end of the existing string. If the
 **	capacity allows it, no new memory will be allocated. Otherwise the function
@@ -163,9 +158,8 @@ bool	string_insert(t_string *str, size_t index, char *insert);
 */
 
 bool	string_push(t_string *str, char *to_push);
-```
 
-```c
+
 /*
 **	Search a string for a substring and replace it with another string.
 **
@@ -177,9 +171,8 @@ bool	string_push(t_string *str, char *to_push);
 */
 
 bool	string_replace(t_string *str, char *to_find, char *replace);
-```
 
-```c
+
 /*
 **	Resize a string so the capacity will have a minimum value of the given
 **	capacity. This is more efficient to use than string_resize if the desired
@@ -195,9 +188,8 @@ bool	string_replace(t_string *str, char *to_find, char *replace);
 */
 
 bool	string_resize_cap(t_string *str, size_t cap);
-```
 
-```c
+
 /*
 **	Double the capacity of an existing string. This will allocate new memory,
 **	copy the contents of the old string to the new string, set the str element
@@ -209,9 +201,8 @@ bool	string_resize_cap(t_string *str, size_t cap);
 */
 
 bool	string_resize(t_string *str);
-```
 
-```c
+
 /*
 **	Shrink the size of a string down to the minimum amount of bytes necessary
 **	to store the string.
