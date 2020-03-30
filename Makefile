@@ -6,7 +6,7 @@
 #    By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/24 22:35:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/03/30 12:28:48 by aaugusti         ###   ########.fr        #
+#    Updated: 2020/03/30 15:49:32 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRCS			=	\
 					from\
 					init\
 					insert\
+					join\
 					push\
 					replace\
 					resize\
@@ -38,6 +39,10 @@ INCLUDES		=	-I .\
 					-I utils\
 
 FLAGS			=	-Wall -Werror -Wextra -Ofast
+
+ifeq ($(DEBUG),1)
+FLAGS			+=	-g
+endif
 
 AR_COMMAND		=	ar rs
 

@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 22:36:16 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/30 12:02:15 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/30 14:34:11 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,14 @@
 # include <stdbool.h>
 # include <stddef.h>
 # include <stdint.h>
+
+/*
+**	The initial capacity of the result string returned by the 'join' functions.
+*/
+
+# ifndef JOIN_INIT_CAP
+#  define JOIN_INIT_CAP 100
+# endif
 
 typedef struct	s_string {
 	size_t	len;
@@ -95,6 +103,44 @@ bool	string_init(size_t init_cap, char *init_value, t_string *result);
 */
 
 bool	string_insert(t_string *str, size_t index, char *insert);
+
+
+/*
+**	Join an array of strings together into a single string. The strings will be
+**	seperated by the seperator string which is given. Initially, the result
+**	string will have a capacity defined by the JOIN_INIT_CAP compile constant.
+**	At the end of the joining the result string will be shrunk down to minimal
+**	size. The strings in the array will not be affected or freed in any way.
+**
+**	@param {t_string[]} arr - an array of t_strings
+**	@param {size_t} arrlen - the amount of strings in the array
+**	@param {char *} seperator
+**	@param {t_string *} result
+**
+**	@return {bool} - true if an allocation failed
+*/
+
+bool	string_join(t_string arr[], size_t arrlen, char *seperator,
+			t_string *result);
+
+
+/*
+**	Join an array of strings together into a single string. The strings will be
+**	seperated by the seperator string which is given. Initially, the result
+**	string will have a capacity defined by the JOIN_INIT_CAP compile constant.
+**	At the end of the joining the result string will be shrunk down to minimal
+**	size. The strings in the array will be freed, as well as the array itself.
+**
+**	@param {t_string[]} arr - an array of t_strings
+**	@param {size_t} arrlen - the amount of strings in the array
+**	@param {char *} seperator
+**	@param {t_string *} result
+**
+**	@return {bool} - true if an allocation failed
+*/
+
+bool	string_join_consume(t_string arr[], size_t arrlen, char *seperator,
+			t_string *result);
 
 
 /*

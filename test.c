@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 13:32:47 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/30 12:21:13 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/30 15:54:37 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,34 @@ static void	test_replace_end(void)
 	assert(!strcmp(str.str, "test bar"));
 	assert(str.len == 8);
 	assert(str.cap == 8);
+	string_free(&str);
+}
+
+static void	test_join(void)
+{
+	t_string	*arr;
+	t_string	str;
+
+	arr = malloc(3 * sizeof(t_string));
+	assert(arr);
+	assert(!string_from("test", &arr[0]));
+	assert(!string_from("foo", &arr[1]));
+	assert(!string_from("bar", &arr[2]));
+	assert(!string_join(arr, 3, ", ", &str));
+	assert(str.len == 14);
+	assert(str.len == str.cap);
+	assert(!strcmp(str.str, "test, foo, bar"));
+	string_free(&str);
+	assert(!string_join(arr, 3, "", &str));
+	assert(str.len == 10);
+	assert(str.len == str.cap);
+	assert(!strcmp(str.str, "testfoobar"));
+	string_free(&str);
+	assert(!string_join_consume(arr, 3, ".", &str));
+	assert(str.len == 12);
+	assert(str.len == str.cap);
+	assert(!strcmp(str.str, "test.foo.bar"));
+	string_free(&str);
 }
 
 typedef struct	s_test {
@@ -150,6 +178,7 @@ t_test	g_tests[] = {
 	{ "insert",			test_insert },
 	{ "replace",		test_replace },
 	{ "replace_end",	test_replace_end },
+	{ "join",			test_join },
 	{ NULL,			NULL },
 };
 

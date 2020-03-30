@@ -147,6 +147,44 @@ bool	string_insert(t_string *str, size_t index, char *insert);
 
 
 /*
+**	Join an array of strings together into a single string. The strings will be
+**	seperated by the seperator string which is given. Initially, the result
+**	string will have a capacity defined by the JOIN_INIT_CAP compile constant.
+**	At the end of the joining the result string will be shrunk down to minimal
+**	size. The strings in the array will not be affected or freed in any way.
+**
+**	@param {t_string[]} arr - an array of t_strings
+**	@param {size_t} arrlen - the amount of strings in the array
+**	@param {char *} seperator
+**	@param {t_string *} result
+**
+**	@return {bool} - true if an allocation failed
+*/
+
+bool	string_join(t_string arr[], size_t arrlen, char *seperator,
+			t_string *result);
+
+
+/*
+**	Join an array of strings together into a single string. The strings will be
+**	seperated by the seperator string which is given. Initially, the result
+**	string will have a capacity defined by the JOIN_INIT_CAP compile constant.
+**	At the end of the joining the result string will be shrunk down to minimal
+**	size. The strings in the array will be freed, as well as the array itself.
+**
+**	@param {t_string[]} arr - an array of t_strings
+**	@param {size_t} arrlen - the amount of strings in the array
+**	@param {char *} seperator
+**	@param {t_string *} result
+**
+**	@return {bool} - true if an allocation failed
+*/
+
+bool	string_join_consume(t_string arr[], size_t arrlen, char *seperator,
+			t_string *result);
+
+
+/*
 **	Push a string of characters to the end of the existing string. If the
 **	capacity allows it, no new memory will be allocated. Otherwise the function
 **	allocates new memory until the new string will fit.
@@ -222,7 +260,6 @@ Feel free to open an issue if you encounter any problems with the library. Pull 
 These are some functions which will likely be added in the near future.
 * string_dup - duplicate a string
 * string_index_of - find the index of a substring
-* string_join - give an array of strings and concatenate them into a new string
 * string_split - splits the string at a given set of characters and returns an array of `t_string` instances
 * string_to_low - convert all characters to lowercase
 * string_to_up - convert all characters to uppercase
