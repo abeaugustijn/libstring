@@ -103,6 +103,9 @@ bool
 string_push(t_string *str, char *to_push);
 
 bool
+string_pushc(t_string *str, char to_push);
+
+bool
 string_replace(t_string *str, char *to_find, char *replace);
 
 bool

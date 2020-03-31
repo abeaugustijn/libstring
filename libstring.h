@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 22:36:16 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/31 09:37:50 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/31 12:48:53 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,7 +178,18 @@ bool	string_join_std(char *arr[], size_t arrlen, char *seperator,
 
 
 /*
-**	
+**	Join an array of strings together into a single string. The strings will be
+**	seperated by the seperator string which is given. Initially, the result
+**	string will have a capacity defined by the JOIN_INIT_CAP compile constant.
+**	At the end of the joining the result string will be shrunk down to minimal
+**	size. The strings in the array will be freed, as well as the array itself.
+**
+**	@param {t_string[]} arr - an array of t_strings
+**	@param {size_t} arrlen - the amount of strings in the array
+**	@param {char *} seperator
+**	@param {t_string *} result
+**
+**	@return {bool} - true if an allocation failed
 */
 
 bool	string_join_std_consume(char *arr[], size_t arrlen, char *seperator,
@@ -193,10 +204,23 @@ bool	string_join_std_consume(char *arr[], size_t arrlen, char *seperator,
 **	@param {t_string *} str
 **	@param {char *} to_push
 **
-**	@return {bool} - true if an allocation failed
+**	@return {bool} - true if the allocation failed
 */
 
 bool	string_push(t_string *str, char *to_push);
+
+
+/*
+**	Push a single character to the end of the string. If there is no space left
+**	in the string buffer, new memory will be allocated.
+**
+**	@param {t_string *} str
+**	@param {char} to_push
+**
+**	@return {bool} - true if the allocation failed
+*/
+
+bool	string_pushc(t_string *str, char to_push);
 
 
 /*

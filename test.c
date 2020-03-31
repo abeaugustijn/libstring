@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 13:32:47 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/31 09:25:44 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/31 12:53:03 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,14 @@ static void	test_simple(void)
 	assert(str.cap == 20);
 	assert(str.len == 11);
 	assert(!strcmp(str.str, "test123456a"));
+	string_pushc(&str, 'b');
+	assert(str.cap == 20);
+	assert(str.len == 12);
+	assert(!strcmp(str.str, "test123456ab"));
 	string_shrink(&str);
-	assert(str.cap == 11);
-	assert(str.len == 11);
-	assert(!strcmp(str.str, "test123456a"));
+	assert(str.cap == 12);
+	assert(str.len == 12);
+	assert(!strcmp(str.str, "test123456ab"));
 	string_free(&str);
 }
 
