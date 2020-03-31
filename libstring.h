@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 22:36:16 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/31 12:48:53 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/31 18:46:56 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -234,6 +234,17 @@ bool	string_pushc(t_string *str, char to_push);
 */
 
 bool	string_replace(t_string *str, char *to_find, char *replace);
+
+
+/*
+**	Resets a string. This basically means setting the size to 0. Optionally,
+**	the string can be cleared.
+**
+**	@param {t_string *} str
+**	@param {bool} clear
+*/
+
+void	string_reset(t_string *str, bool clear);
 
 
 /*

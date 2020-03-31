@@ -127,6 +127,9 @@ string_pushc(t_string *str, char to_push);
 bool
 string_replace(t_string *str, char *to_find, char *replace);
 
+void
+string_reset(t_string *str, bool clear);
+
 bool
 string_resize_cap(t_string *str, size_t cap);
 

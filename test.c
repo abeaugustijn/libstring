@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 13:32:47 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/31 12:53:03 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/31 18:53:03 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -246,6 +246,21 @@ static void	test_split(void)
 	assert(result == NULL);
 }
 
+static void	test_clear(void)
+{
+	t_string	str;
+
+	assert(!string_from("test", &str));
+	string_reset(&str, false);
+	assert(str.len == 0);
+	assert(!strcmp("test", str.str));
+	assert(!string_push(&str, "abcd"));
+	string_reset(&str, true);
+	assert(str.len == 0);
+	assert(!memcmp("\0\0\0\0", str.str, 4));
+	string_free(&str);
+}
+
 typedef struct	s_test {
 	char	*name;
 	void	(*func)(void);
@@ -260,6 +275,7 @@ t_test	g_tests[] = {
 	{ "join",			test_join },
 	{ "from_range",		test_from_range },
 	{ "split",			test_split },
+	{ "clear",			test_clear },
 	{ NULL,				NULL },
 };
 
