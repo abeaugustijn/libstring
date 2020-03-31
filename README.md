@@ -24,6 +24,25 @@ typedef struct  s_string {
 ```
 The information in this struct should only be affected by the library functions. Manipulation of these values outside of the library functions can result in undefined behaviour.
 
+## Compilation
+The library includes a basic makefile. To compile the library for usage in an application, just use the general make command.
+```
+$ make
+...
+$ ls libstring.a
+libstring.a
+```
+Some tests are included in the library aswell (see [test.c](test.c)). These can be compiled and executed as following.
+```
+$ make test
+...
+$ ./test
+```
+To debug the library, the `DEBUG` environment variable needs to be set to `1`. This disables optimization and includes debugging symbols in the library aswell as the test executable.
+```
+$ DEBUG=1 make re
+```
+
 ## Example
 A simple workflow with the library:
 ```c
