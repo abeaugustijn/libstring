@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 22:36:16 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/31 09:28:19 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/31 09:37:50 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,6 +155,33 @@ bool	string_join(t_string arr[], size_t arrlen, char *seperator,
 */
 
 bool	string_join_consume(t_string arr[], size_t arrlen, char *seperator,
+			t_string *result);
+
+
+/*
+**	Join an array of strings together into a single string. The strings will be
+**	seperated by the seperator string which is given. Initially, the result
+**	string will have a capacity defined by the JOIN_INIT_CAP compile constant.
+**	At the end of the joining the result string will be shrunk down to minimal
+**	size. The strings in the array will not be affected or freed in any way.
+**
+**	@param {char *[]} arr - an array of strings
+**	@param {size_t} arrlen - the amount of strings in the array
+**	@param {char *} seperator
+**	@param {t_string *} result
+**
+**	@return {bool} - true if an allocation failed
+*/
+
+bool	string_join_std(char *arr[], size_t arrlen, char *seperator,
+			t_string *result);
+
+
+/*
+**	
+*/
+
+bool	string_join_std_consume(char *arr[], size_t arrlen, char *seperator,
 			t_string *result);
 
 
