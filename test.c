@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 13:32:47 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/30 16:50:24 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/31 09:25:44 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,6 +191,57 @@ static void	test_from_range(void)
 	assert(string_from_range(test_str, 500, 5, &str));
 }
 
+static void test_split_free(t_string *arr, size_t arr_size)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < arr_size)
+	{
+		string_free(&arr[i]);
+		i++;
+	}
+	free(arr);
+}
+
+static void	test_split(void)
+{
+	char		*to_split;
+	t_string	*result;
+	size_t		result_size;
+
+	to_split = "   test abc     ,., def ,   .x";
+	assert(!string_split(to_split, " ,.", &result, &result_size));
+	assert(result_size == 4);
+	assert(!strcmp(result[0].str, "test"));
+	assert(!strcmp(result[1].str, "abc"));
+	assert(!strcmp(result[2].str, "def"));
+	assert(!strcmp(result[3].str, "x"));
+	test_split_free(result, result_size);
+
+	to_split = "test";
+	assert(!string_split(to_split, " ,.", &result, &result_size));
+	assert(result_size == 1);
+	assert(!strcmp(result[0].str, "test"));
+	test_split_free(result, result_size);
+
+	to_split = "";
+	assert(string_split(to_split, " ,.", &result, &result_size));
+	assert(result_size == 0);
+	assert(result == NULL);
+
+	to_split = "123  ";
+	assert(!string_split(to_split, "", &result, &result_size));
+	assert(result_size == 1);
+	assert(!strcmp(result[0].str, "123  "));
+	test_split_free(result, result_size);
+
+	to_split = "";
+	assert(string_split(to_split, "", &result, &result_size));
+	assert(result_size == 0);
+	assert(result == NULL);
+}
+
 typedef struct	s_test {
 	char	*name;
 	void	(*func)(void);
@@ -204,7 +255,8 @@ t_test	g_tests[] = {
 	{ "replace_end",	test_replace_end },
 	{ "join",			test_join },
 	{ "from_range",		test_from_range },
-	{ NULL,			NULL },
+	{ "split",			test_split },
+	{ NULL,				NULL },
 };
 
 int	main(void)

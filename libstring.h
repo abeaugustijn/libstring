@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 22:36:16 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/30 16:42:37 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/31 09:28:19 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -225,5 +225,24 @@ bool	string_resize(t_string *str);
 */
 
 bool	string_shrink(t_string *str);
+
+
+/*
+**	Split a string on given characters. The result will be an array of strings.
+**	If any allocation fails, all allocated memory will be freed and true will
+**	be returned.
+**
+**	@param {char *} to_split - should not be empty. If empty, result will be
+**		NULL returned and result_size will bet set to 0.
+**	@param {char *} split_chars - a string of characters defining the
+**		characters on which the string will be splitted.
+**	@param {t_string **} result
+**	@param {size_t} result_size - the amount of elements in the resulting array
+**
+**	@return {bool} true if an allocation failed
+*/
+
+bool	string_split(char *to_split, char *split_chars, t_string **result,
+			size_t *result_size);
 
 #endif

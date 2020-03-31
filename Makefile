@@ -6,7 +6,7 @@
 #    By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/24 22:35:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/03/30 16:25:51 by aaugusti         ###   ########.fr        #
+#    Updated: 2020/03/31 09:01:04 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRCS			=	\
 					resize\
 					resize_cap\
 					shrink\
+					split\
 
 UTILS			=	\
 					bzero\
@@ -39,10 +40,12 @@ UTILS_OFILES	=	$(UTILS:%=utils/ft_%.o)
 INCLUDES		=	-I .\
 					-I utils\
 
-FLAGS			=	-Wall -Werror -Wextra -Ofast
+FLAGS			=	-Wall -Werror -Wextra
 
 ifeq ($(DEBUG),1)
-FLAGS			+=	-g
+FLAGS			+=	-g -Og
+else
+FLAGS			+=	-Ofast
 endif
 
 AR_COMMAND		=	ar rs

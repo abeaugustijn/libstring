@@ -251,6 +251,25 @@ bool	string_resize(t_string *str);
 */
 
 bool	string_shrink(t_string *str);
+
+
+/*
+**	Split a string on given characters. The result will be an array of strings.
+**	If any allocation fails, all allocated memory will be freed and true will
+**	be returned.
+**
+**	@param {char *} to_split - should not be empty. If empty, result will be
+**		NULL returned and result_size will bet set to 0.
+**	@param {char *} split_chars - a string of characters defining the
+**		characters on which the string will be splitted.
+**	@param {t_string **} result
+**	@param {size_t} result_size - the amount of elements in the resulting array
+**
+**	@return {bool} true if an allocation failed
+*/
+
+bool	string_split(char *to_split, char *split_chars, t_string **result,
+			size_t *result_size);
 ```
 
 ## Contributions
@@ -260,7 +279,6 @@ Feel free to open an issue if you encounter any problems with the library. Pull 
 These are some functions which will likely be added in the near future.
 * string_dup - duplicate a string
 * string_index_of - find the index of a substring
-* string_split - splits the string at a given set of characters and returns an array of `t_string` instances
 * string_to_low - convert all characters to lowercase
 * string_to_up - convert all characters to uppercase
 * string_trim - remove all whitespace surrounding the string
