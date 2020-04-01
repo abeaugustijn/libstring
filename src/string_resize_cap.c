@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 10:58:09 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/30 12:29:53 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/04/01 20:50:13 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ bool	string_resize_cap(t_string *str, size_t cap)
 {
 	char	*new_str;
 
+	if (str->cap == 0)
+		str->cap++;
 	while (cap > str->cap)
 		str->cap *= 2;
 	new_str = malloc(str->cap + 1);
