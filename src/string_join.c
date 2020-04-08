@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 13:19:55 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/31 09:35:31 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/04/08 19:59:29 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ bool	string_join_std_consume(char *arr[], size_t arrlen, char *seperator,
 			t_string *result)
 {
 	size_t	i;
-	
+
 	if (string_join_std(arr, arrlen, seperator, result))
 		return (true);
 	i = 0;
@@ -55,7 +55,7 @@ bool	string_join_consume(t_string arr[], size_t arrlen, char *seperator,
 			t_string *result)
 {
 	size_t	i;
-	
+
 	if (string_join(arr, arrlen, seperator, result))
 		return (true);
 	i = 0;

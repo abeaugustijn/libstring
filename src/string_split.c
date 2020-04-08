@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 15:57:39 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/31 09:29:02 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/04/08 19:59:11 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,9 @@ static bool	string_split_free(t_string *arr, size_t arrlen)
 }
 
 static void	string_split_size(char *to_split, char *split_chars,
-		size_t *result_size)
+				size_t *result_size)
 {
 	size_t	i;
-
 
 	*result_size = 0;
 	i = 0;
@@ -60,8 +59,8 @@ static void	string_split_size(char *to_split, char *split_chars,
 	}
 }
 
-bool	string_split_allocate(char *to_split, char *split_chars, t_string **result,
-			size_t *result_size)
+bool		string_split_allocate(char *to_split, char *split_chars,
+				t_string **result, size_t *result_size)
 {
 	string_split_size(to_split, split_chars, result_size);
 	if (*result_size == 0)
@@ -74,8 +73,8 @@ bool	string_split_allocate(char *to_split, char *split_chars, t_string **result,
 	return (false);
 }
 
-bool	string_split(char *to_split, char *split_chars, t_string **result,
-			size_t *result_size)
+bool		string_split(char *to_split, char *split_chars, t_string **result,
+				size_t *result_size)
 {
 	size_t	arr_index;
 	size_t	i;

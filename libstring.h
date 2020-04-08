@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 22:36:16 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/31 18:46:56 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/04/08 20:06:03 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,7 @@ typedef struct	s_string {
 **		to be deleted.
 */
 
-void	string_delete(t_string *str, size_t index, size_t len);
-
+void			string_delete(t_string *str, size_t index, size_t len);
 
 /*
 **	Free the string. This will also set all of the values in the string struct
@@ -53,8 +52,7 @@ void	string_delete(t_string *str, size_t index, size_t len);
 **	@param {t_string *} str
 */
 
-void	string_free(t_string *str);
-
+void			string_free(t_string *str);
 
 /*
 **	Create a new string which inherits the given string. The len and cap fields
@@ -67,8 +65,7 @@ void	string_free(t_string *str);
 **	@return {bool} - true if the allocation failed
 */
 
-bool	string_from(char *from, t_string *str);
-
+bool			string_from(char *from, t_string *str);
 
 /*
 **	Create a new string which inherits a subsection of the given string. New
@@ -82,8 +79,8 @@ bool	string_from(char *from, t_string *str);
 **	@return {bool} - true is the allocation failed or an invalid range is given
 */
 
-bool	string_from_range(char *from, size_t start, size_t len, t_string *str);
-
+bool			string_from_range(char *from, size_t start, size_t len,
+					t_string *str);
 
 /*
 **	Initialize a new string. An initial string (init_value) can be given. If the
@@ -99,8 +96,8 @@ bool	string_from_range(char *from, size_t start, size_t len, t_string *str);
 **	@return {bool} - true if the allocation failed
 */
 
-bool	string_init(size_t init_cap, char *init_value, t_string *result);
-
+bool			string_init(size_t init_cap, char *init_value,
+					t_string *result);
 
 /*
 **	Insert a substring into an existing string. This will only allocate new
@@ -117,8 +114,7 @@ bool	string_init(size_t init_cap, char *init_value, t_string *result);
 **	@return {bool} - true if the allocation fails
 */
 
-bool	string_insert(t_string *str, size_t index, char *insert);
-
+bool			string_insert(t_string *str, size_t index, char *insert);
 
 /*
 **	Join an array of strings together into a single string. The strings will be
@@ -135,9 +131,8 @@ bool	string_insert(t_string *str, size_t index, char *insert);
 **	@return {bool} - true if an allocation failed
 */
 
-bool	string_join(t_string arr[], size_t arrlen, char *seperator,
-			t_string *result);
-
+bool			string_join(t_string arr[], size_t arrlen, char *seperator,
+					t_string *result);
 
 /*
 **	Join an array of strings together into a single string. The strings will be
@@ -154,9 +149,8 @@ bool	string_join(t_string arr[], size_t arrlen, char *seperator,
 **	@return {bool} - true if an allocation failed
 */
 
-bool	string_join_consume(t_string arr[], size_t arrlen, char *seperator,
-			t_string *result);
-
+bool			string_join_consume(t_string arr[], size_t arrlen,
+					char *seperator, t_string *result);
 
 /*
 **	Join an array of strings together into a single string. The strings will be
@@ -173,9 +167,8 @@ bool	string_join_consume(t_string arr[], size_t arrlen, char *seperator,
 **	@return {bool} - true if an allocation failed
 */
 
-bool	string_join_std(char *arr[], size_t arrlen, char *seperator,
+bool			string_join_std(char *arr[], size_t arrlen, char *seperator,
 			t_string *result);
-
 
 /*
 **	Join an array of strings together into a single string. The strings will be
@@ -192,9 +185,8 @@ bool	string_join_std(char *arr[], size_t arrlen, char *seperator,
 **	@return {bool} - true if an allocation failed
 */
 
-bool	string_join_std_consume(char *arr[], size_t arrlen, char *seperator,
-			t_string *result);
-
+bool			string_join_std_consume(char *arr[], size_t arrlen,
+					char *seperator, t_string *result);
 
 /*
 **	Push a string of characters to the end of the existing string. If the
@@ -207,8 +199,7 @@ bool	string_join_std_consume(char *arr[], size_t arrlen, char *seperator,
 **	@return {bool} - true if the allocation failed
 */
 
-bool	string_push(t_string *str, char *to_push);
-
+bool			string_push(t_string *str, char *to_push);
 
 /*
 **	Push a single character to the end of the string. If there is no space left
@@ -220,8 +211,7 @@ bool	string_push(t_string *str, char *to_push);
 **	@return {bool} - true if the allocation failed
 */
 
-bool	string_pushc(t_string *str, char to_push);
-
+bool			string_pushc(t_string *str, char to_push);
 
 /*
 **	Search a string for a substring and replace it with another string.
@@ -233,8 +223,7 @@ bool	string_pushc(t_string *str, char to_push);
 **	@return {bool} true if an allocation failed
 */
 
-bool	string_replace(t_string *str, char *to_find, char *replace);
-
+bool			string_replace(t_string *str, char *to_find, char *replace);
 
 /*
 **	Resets a string. This basically means setting the size to 0. Optionally,
@@ -244,8 +233,7 @@ bool	string_replace(t_string *str, char *to_find, char *replace);
 **	@param {bool} clear
 */
 
-void	string_reset(t_string *str, bool clear);
-
+void			string_reset(t_string *str, bool clear);
 
 /*
 **	Resize a string so the capacity will have a minimum value of the given
@@ -261,8 +249,7 @@ void	string_reset(t_string *str, bool clear);
 **	@return {bool} - true if the allocation failed
 */
 
-bool	string_resize_cap(t_string *str, size_t cap);
-
+bool			string_resize_cap(t_string *str, size_t cap);
 
 /*
 **	Double the capacity of an existing string. This will allocate new memory,
@@ -274,8 +261,7 @@ bool	string_resize_cap(t_string *str, size_t cap);
 **	@return {bool} - true if the allocation failed
 */
 
-bool	string_resize(t_string *str);
-
+bool			string_resize(t_string *str);
 
 /*
 **	Shrink the size of a string down to the minimum amount of bytes necessary
@@ -286,8 +272,7 @@ bool	string_resize(t_string *str);
 **	@return {bool} - true if the allocation failed
 */
 
-bool	string_shrink(t_string *str);
-
+bool			string_shrink(t_string *str);
 
 /*
 **	Split a string on given characters. The result will be an array of strings.
@@ -304,7 +289,7 @@ bool	string_shrink(t_string *str);
 **	@return {bool} true if an allocation failed
 */
 
-bool	string_split(char *to_split, char *split_chars, t_string **result,
-			size_t *result_size);
+bool			string_split(char *to_split, char *split_chars,
+					t_string **result, size_t *result_size);
 
 #endif
