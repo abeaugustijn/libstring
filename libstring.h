@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libstring.h                                        :+:      :+:    :+:   */
+/*   libstring.h                                        :+:    :+:            */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 22:36:16 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/04/08 20:06:03 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/04/28 10:59:33 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -291,5 +291,18 @@ bool			string_shrink(t_string *str);
 
 bool			string_split(char *to_split, char *split_chars,
 					t_string **result, size_t *result_size);
+
+/*
+**	Convert a t_string array to a NULL-terminated char* array. This does not
+**	copy the actual strings itself. The members of the resulting array will be
+**	the same as the `str` elements of the t_string array.
+**
+**	@param {size_t} len - The amount of strings in the given array
+**	@param {t_string[]} array
+**
+**	@return {char *[]} - NULL if the allocation failed
+*/
+
+char			**string_to_array(size_t len, t_string array[]);
 
 #endif

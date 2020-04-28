@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   test.c                                             :+:    :+:            */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 13:32:47 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/31 18:53:03 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/04/28 11:14:44 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -261,6 +261,24 @@ static void	test_clear(void)
 	string_free(&str);
 }
 
+static void	test_to_array(void)
+{
+	t_string	arr[4];
+	char		**new_arr;
+
+	for (int i = 0; i < 4; i++)
+		assert(!string_from("test", &arr[i]));
+	new_arr = string_to_array(4, arr);
+	assert(new_arr);
+	assert(new_arr[4] == NULL);
+	for (int i = 0; i < 4; i++)
+	{
+		assert(new_arr[i] == arr[i].str);
+		free(new_arr[i]);
+	}
+	free(new_arr);
+}
+
 typedef struct	s_test {
 	char	*name;
 	void	(*func)(void);
@@ -276,6 +294,7 @@ t_test	g_tests[] = {
 	{ "from_range",		test_from_range },
 	{ "split",			test_split },
 	{ "clear",			test_clear },
+	{ "to_array",		test_to_array },
 	{ NULL,				NULL },
 };
 

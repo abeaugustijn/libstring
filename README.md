@@ -141,6 +141,9 @@ string_shrink(t_string *str);
 
 bool
 string_split(char *to_split, char *split_chars, t_string **result, size_t *result_size);
+
+char **
+string_to_array(size_t len, t_string array[]);
 ```
 
 [More extensive documentation](libstring.h)
